@@ -1,0 +1,99 @@
+/* 全局样式变量 */
+:root {
+  --primary-color: #1989fa;
+  --success-color: #07c160;
+  --warning-color: #ff976a;
+  --danger-color: #ee0a24;
+  --gray-color: #969799;
+  --gray-light: #f7f8fa;
+  --gray-dark: #323233;
+  --border-color: #ebedf0;
+  --background-color: #f7f8fa;
+  --text-color: #323233;
+  --text-color-secondary: #646566;
+  --text-color-light: #969799;
+}
+
+/* 全局重置样式 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* 移动端适配 */
+html {
+  font-size: 37.5px; /* 基于375px设计稿 */
+}
+
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 32px;
+  }
+}
+
+@media screen and (min-width: 414px) {
+  html {
+    font-size: 41.4px;
+  }
+}
+
+/* 通用样式类 */
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+} 
