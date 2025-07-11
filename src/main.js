@@ -6,6 +6,9 @@ import App from './App.vue'
 // 导入全局样式
 import './styles/index.css'
 
+// 导入Mock数据管理器
+import './api/mockManager.js'
+
 // 创建应用实例
 const app = createApp(App)
 

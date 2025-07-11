@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { showFailToast } from 'vant'
 import { useUserStore } from '@/stores/user'
+import mockManager from './mockManager'
 
 // 创建axios实例
 const request = axios.create({
@@ -13,7 +14,28 @@ const request = axios.create({
 
 // 请求拦截器
 request.interceptors.request.use(
-  (config) => {
+  async (config) => {
+    // 检查是否有Mock数据
+    if (mockManager.isEnabledMock()) {
+      const method = config.method.toUpperCase()
+      const url = config.url
+      const mockHandler = mockManager.getMockHandler(method, url)
+      
+      if (mockHandler) {
+        // 使用Mock数据
+        const mockResponse = await mockHandler(config.params || config.data)
+        config.adapter = () => {
+          return Promise.resolve({
+            data: mockResponse,
+            status: 200,
+            statusText: 'OK',
+            headers: {},
+            config
+          })
+        }
+      }
+    }
+    
     // 添加token到请求头
     const userStore = useUserStore()
     const token = userStore.getToken
@@ -87,3 +109,7 @@ export const post = (url, data = {}) => {
 }
 
 export default request 
+
+// 导出所有API模块
+export * from './UserApi.js'
+export * from './ProductApi.js'
